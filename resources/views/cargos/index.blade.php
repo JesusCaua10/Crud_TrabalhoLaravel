@@ -8,6 +8,7 @@
 <body>
     
     <h1>Lista de Cargos</h1>
+        <a href="{{ route('cargos.create') }}">Adicionar Novo Cargo</a>
     <table border="1">
         <thead>
             <tr>

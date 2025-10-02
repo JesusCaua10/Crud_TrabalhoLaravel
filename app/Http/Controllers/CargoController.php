@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Cargo;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        //
+        return view('cargos.create');
     }
 
     /**
@@ -28,7 +29,11 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cargo::create([
+        'nome' => $request->nome,
+        'salario' => $request->salario,
+    ]);
+        return redirect()->route('cargos.index');
     }
 
     /**

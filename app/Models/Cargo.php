@@ -8,6 +8,6 @@ class Cargo extends Model
 {
     protected $fillable = [
         'nome',
-        'preco',
+        'salario',
     ];
 }
