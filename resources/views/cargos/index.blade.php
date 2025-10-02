@@ -26,6 +26,10 @@
                     <td>{{ $cargo->salario }}</td>
                     <td>
                         <a href="{{ route('cargos.edit', $cargo->id) }}">Editar</a>
+                        <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este cargo?')">Excluir</button>
                     </td>    
                 </tr>
             @endforeach

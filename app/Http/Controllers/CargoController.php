@@ -71,6 +71,8 @@ class CargoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cargo = Cargo::findOrFail($id);
+        $cargo->delete();
+        return redirect()->route('cargos.index');
     }
 }
