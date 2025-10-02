@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cargos', function (Blueprint $table) {
-            $$table->id();
+            $table->id();
             $table->string('nome');
-            $table->decimal('preco', 8, 2);
+            $table->decimal('salario', 8, 2);
             $table->timestamps();
         });
     }

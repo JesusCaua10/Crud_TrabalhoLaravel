@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 
-class CargoContoller extends Controller
+class CargoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $cargos = Cargo::all();
+        return view('cargos.index', compact('cargos'));
     }
 
     /**
