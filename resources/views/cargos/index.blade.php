@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>Lista de Cargos</h1>
-        <a href="{{ route('cargos.create') }}">Adicionar Novo Cargo</a>
-    <table border="1">
+@extends('layouts.app')
+
+@section('title', 'Lista de Cargos')
+
+@section('content')
+    <h1>Cargos</h1>
+    <a href="{{ route('cargos.create') }}" class="btn btn-success" style="margin-bottom: 15px;">Novo Cargo</a>
+    @if(session('success'))
+        <div style="color: green; margin-bottom: 10px;">{{ session('success') }}</div>
+    @endif
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome do Cargo</th>
+                <th>Nome</th>
                 <th>Salário</th>
                 <th>Ações</th>
             </tr>
@@ -23,18 +22,17 @@
                 <tr>
                     <td>{{ $cargo->id }}</td>
                     <td>{{ $cargo->nome }}</td>
-                    <td>{{ $cargo->salario }}</td>
+                    <td>R$ {{ number_format($cargo->salario, 2, ',', '.') }}</td>
                     <td>
-                        <a href="{{ route('cargos.edit', $cargo->id) }}">Editar</a>
-                        <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('cargos.edit', $cargo->id) }}" class="btn">Editar</a>
+                        <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este cargo?')">Excluir</button>
-                    </td>    
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-</body>
-</html>
+@endsection
