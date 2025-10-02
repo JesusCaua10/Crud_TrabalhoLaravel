@@ -49,7 +49,8 @@ class CargoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cargo = Cargo::findOrFail($id);
+        return view('cargos.edit', compact('cargo'));
     }
 
     /**
@@ -57,7 +58,12 @@ class CargoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cargo = Cargo::findOrFail($id);
+        $cargo->update([
+            'nome' => $request->nome,
+            'salario' => $request->salario,
+        ]);
+        return redirect()->route('cargos.index');
     }
 
     /**

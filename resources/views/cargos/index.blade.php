@@ -15,6 +15,7 @@
                 <th>ID</th>
                 <th>Nome do Cargo</th>
                 <th>Salário</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                     <td>{{ $cargo->id }}</td>
                     <td>{{ $cargo->nome }}</td>
                     <td>{{ $cargo->salario }}</td>
+                    <td>
+                        <a href="{{ route('cargos.edit', $cargo->id) }}">Editar</a>
+                    </td>    
                 </tr>
             @endforeach
         </tbody>
